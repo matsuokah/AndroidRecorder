@@ -1,0 +1,35 @@
+on main()
+  set command to "/usr/local/bin/adb shell screenrecord --time-limit 30 "
+  set y to ((year of (current date)) as string)
+  set mon to (((month of (current date)) as integer) as string)
+  set d to ((day of (current date)) as string)
+  set h to ((hours of (current date)) as string)
+  set min to ((minutes of (current date)) as string)
+  set s to ((seconds of (current date)) as string)
+  set filepath to ("/sdcard/" & y & mon & d & "_" & h & min & s & ".mp4")
+  set command to (command & filepath)
+  display dialog "
+　　 ＼　　　／
+　　 ／￣￣￣＼
+　　/ ●　　● ヽ
+　　L＿＿＿＿＿_|
+　　　∩∧∧∩
+　　　|(ﾟ∀ﾟ)|　　　     録画を開始します。
+　　　ヽ　　ノ　　  　 録画は30秒間行われます。　　
+　　～/　　<　　　　
+　　 ( (⌒＼＼　　　　  ※途中でケーブルを抜けば
+i⌒Ｙ￣￣￣￣￣Ｙ⌒i　  録画は終了します。
+|　｜　　　　　｜　|
+|　｜　　　　　｜　|
+ヽ_｜　　　　　｜_ノ
+　　＼＿＿＿＿／
+　　　|　||　|
+　　　ヽノヽノ
+
+書き込み先: " & filepath with title "Android Recorder"
+  do shell script (command)
+end main
+
+on run
+  my main()
+end run
